@@ -6,7 +6,6 @@
   <title>Thabeeb Jafran | 360° Technical Command Center</title>
   
   <script>
-    // Theme Initializer to prevent flash
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     } else {
@@ -17,46 +16,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Custom Scrollbars */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    .dark ::-webkit-scrollbar-track { background: #0f172a; }
-    .dark ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-    .glass-panel {
-      backdrop-filter: blur(16px);
-    }
-    .dark .glass-panel {
-      background: rgba(15, 23, 42, 0.85);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: rgba(0, 0, 0, 0.08);
-    }
-
-    .dark .tree-branch {
-      position: relative;
-      padding-left: 1rem;
-      border-left: 1px solid rgba(255, 255, 255, 0.12);
-      margin-left: 0.5rem;
-    }
-    .tree-branch {
-      position: relative;
-      padding-left: 1rem;
-      border-left: 1px solid rgba(0, 0, 0, 0.12);
-      margin-left: 0.5rem;
-    }
-    .tree-item { transition: all 0.2s ease; }
-    .tree-item:hover { transform: translateX(3px); }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white transition-colors duration-200">
 
-  <!-- ==================== TOP NAVIGATION HEADER ==================== -->
+  <!-- HEADER -->
   <header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800/80 px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
     <div class="flex items-center space-x-3.5">
       <div class="relative">
@@ -74,8 +38,6 @@
 
     <!-- THEME CONTROLS & SOCIAL BUTTONS -->
     <div class="flex items-center gap-2.5">
-      
-      <!-- ☀️ / 🌙 / 💻 THEME SWITCHER -->
       <div class="flex items-center p-1 rounded-xl bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs">
         <button id="theme-light-btn" onclick="setTheme('light')" class="px-2 py-1 rounded-lg flex items-center gap-1 hover:text-slate-900 dark:hover:text-white transition" title="Day (Light Mode)">
           <i data-lucide="sun" class="w-3.5 h-3.5"></i> <span class="hidden sm:inline">Day</span>
@@ -88,7 +50,7 @@
         </button>
       </div>
 
-      <a href="https://github.com/thabeebjafran" target="_blank" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-700 transition text-xs font-medium flex items-center gap-1.5 shadow-sm">
+      <a href="https://github.com/thabeebjafran" target="_blank" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition text-xs font-medium flex items-center gap-1.5 shadow-sm">
         <i data-lucide="github" class="w-3.5 h-3.5"></i> <span class="hidden sm:inline">GitHub</span>
       </a>
       <a href="https://www.linkedin.com/in/thabeebjafran" target="_blank" class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/60 text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-white transition text-xs font-medium flex items-center gap-1.5 shadow-sm">
@@ -100,10 +62,10 @@
     </div>
   </header>
 
-  <!-- ==================== 3-COLUMN MASTER MATRIX ==================== -->
+  <!-- 3-COLUMN LAYOUT -->
   <div class="flex-1 flex overflow-hidden max-w-[1920px] mx-auto w-full">
 
-    <!-- LEFT SIDEBAR: ENTERPRISE ECOSYSTEMS -->
+    <!-- LEFT SIDEBAR -->
     <aside class="w-80 border-r border-slate-200 dark:border-slate-800/80 bg-white/70 dark:bg-slate-950/90 overflow-y-auto p-4 hidden lg:block shrink-0 space-y-3">
       <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
         <h2 class="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-mono flex items-center gap-1.5">
@@ -113,96 +75,40 @@
       </div>
 
       <div class="space-y-2 text-xs">
-        <!-- MICROSOFT -->
         <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
           <button onclick="toggleTree('tree-msft')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-blue-500"></span> Microsoft Ecosystem
-            </span>
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Microsoft Ecosystem</span>
             <i data-lucide="chevron-down" id="icon-tree-msft" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
           </button>
           <div id="tree-msft" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('Power BI')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📊 Power BI (DAX, Service, RLS)</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Microsoft Fabric')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🌐 Microsoft Fabric & OneLake</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Power Platform')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">⚡ Power Automate & Power Apps</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Excel')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📈 Excel (Power Pivot, Modeling)</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Azure')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">☁️ Azure Synapse & ADF</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Azure DevOps')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📋 Azure DevOps (Scrum/Boards)</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Power BI')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📊 Power BI (DAX, Service)</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Fabric')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🌐 Microsoft Fabric & OneLake</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Power Platform')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">⚡ Power Automate & Apps</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Excel')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📈 Excel Modeling</a>
           </div>
         </div>
 
-        <!-- GOOGLE -->
         <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
           <button onclick="toggleTree('tree-google')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-red-500"></span> Google & GCP
-            </span>
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span> Google & GCP</span>
             <i data-lucide="chevron-down" id="icon-tree-google" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
           </button>
           <div id="tree-google" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
             <a href="javascript:void(0)" onclick="filterCategory('BigQuery')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">☁️ BigQuery Serverless DWH</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Cloud Run')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🚀 Cloud Run Containerized Apps</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Looker')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📊 Looker & Looker Studio</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Cloud Run')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🚀 Cloud Run Microservices</a>
             <a href="javascript:void(0)" onclick="filterCategory('Vertex AI')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🤖 Vertex AI & Gemini 2.5 Flash</a>
             <a href="javascript:void(0)" onclick="filterCategory('Colab')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📓 Google Colab Notebooks</a>
           </div>
         </div>
 
-        <!-- TABLEAU & SALESFORCE -->
         <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
           <button onclick="toggleTree('tree-tableau')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Tableau & Salesforce
-            </span>
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-500"></span> Tableau & Salesforce</span>
             <i data-lucide="chevron-down" id="icon-tree-tableau" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
           </button>
           <div id="tree-tableau" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
             <a href="javascript:void(0)" onclick="filterCategory('Tableau')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📊 Tableau Public & Desktop</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Tableau Prep')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🧹 Tableau Prep Builder</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Salesforce')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">💼 Salesforce CRM Analytics</a>
-          </div>
-        </div>
-
-        <!-- AWS -->
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
-          <button onclick="toggleTree('tree-aws')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-amber-500"></span> Amazon Web Services
-            </span>
-            <i data-lucide="chevron-down" id="icon-tree-aws" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
-          </button>
-          <div id="tree-aws" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('AWS Redshift')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">☁️ Amazon Redshift & Athena</a>
-            <a href="javascript:void(0)" onclick="filterCategory('AWS S3')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📦 AWS S3 Data Lakes</a>
-            <a href="javascript:void(0)" onclick="filterCategory('AWS QuickSight')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📊 AWS QuickSight</a>
-          </div>
-        </div>
-
-        <!-- SNOWFLAKE & DATABRICKS -->
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
-          <button onclick="toggleTree('tree-lakehouse')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Snowflake & Databricks
-            </span>
-            <i data-lucide="chevron-down" id="icon-tree-lakehouse" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
-          </button>
-          <div id="tree-lakehouse" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('Snowflake')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">❄️ Snowflake Data Cloud</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Databricks')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🧱 Databricks & Delta Lake</a>
-          </div>
-        </div>
-
-        <!-- ATLASSIAN (JIRA PMO) -->
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
-          <button onclick="toggleTree('tree-jira')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-sky-400"></span> Atlassian (Jira PMO)
-            </span>
-            <i data-lucide="chevron-down" id="icon-tree-jira" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
-          </button>
-          <div id="tree-jira" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('Jira')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🏃 Jira Scrum & Kanban Boards</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Confluence')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📚 Confluence Specs & Charters</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Salesforce')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">💼 Salesforce Analytics</a>
           </div>
         </div>
       </div>
@@ -210,12 +116,9 @@
 
     <!-- CENTER MAIN STAGE -->
     <main class="flex-1 overflow-y-auto p-4 lg:p-8 space-y-6">
-      
-      <!-- HERO IMPACT BANNER -->
       <section class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-950 p-6 lg:p-8 shadow-sm dark:shadow-2xl space-y-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/80 border border-cyan-200 dark:border-cyan-800/50 text-cyan-800 dark:text-cyan-400 text-xs font-mono">
-          <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
-          Open to Lead BI / Business Analyst / TPM Roles
+          <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span> Open to Lead BI / Business Analyst / TPM Roles
         </div>
         <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
           Engineering Business Intelligence, Data Pipelines & AI Systems
@@ -224,7 +127,6 @@
           Bridging the gap between <b>Data Engineering</b>, <b>Financial Analytics</b>, and <b>Agile Project Leadership</b> to build scalable pipelines and track enterprise revenue.
         </p>
 
-        <!-- KPI COUNTERS -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
           <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800">
             <div class="text-xl font-bold text-cyan-600 dark:text-cyan-400 font-mono">$55.3M+</div>
@@ -232,7 +134,7 @@
           </div>
           <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800">
             <div class="text-xl font-bold text-emerald-600 dark:text-emerald-400 font-mono">+11.5%</div>
-            <div class="text-[11px] text-slate-500 dark:text-slate-400">Pricing Revenue Lift</div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400">Pricing Lift</div>
           </div>
           <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800">
             <div class="text-xl font-bold text-purple-600 dark:text-purple-400 font-mono">100%</div>
@@ -245,7 +147,7 @@
         </div>
       </section>
 
-      <!-- ROLE PILLARS TOGGLE BAR -->
+      <!-- ROLE PILLARS -->
       <section class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
         <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full">
           <button onclick="filterPillar('all')" class="pillar-btn active px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-600 text-white shadow-lg shadow-cyan-600/20 transition">All Showcases</button>
@@ -258,114 +160,11 @@
         </div>
       </section>
 
-      <!-- PROJECTS SHOWCASE GRID -->
-      <section id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        
-        <!-- CARD 1 -->
-        <div class="project-card bi tpm rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 flex flex-col justify-between hover:border-cyan-500/50 transition-all hover:shadow-xl group shadow-sm">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950/80 text-purple-800 dark:text-purple-300 border border-purple-200 dark:border-purple-800/50 font-mono font-medium">Agentic AI & Cloud Run</span>
-              <span class="text-xs text-slate-400">2026 Production</span>
-            </div>
-            <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition">Autonomous Job Ingestion & Outreach Agent</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Multi-agent system sourcing jobs via Apify, auditing visa/scam risk with Gemini 2.5 Flash, real-time Google Sheets database sync, and 1-tap Gmail & WhatsApp cards in Google Chat.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Gemini 2.5 Flash</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">FastAPI</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Cloud Run</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Apify</span>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between mt-3">
-            <a href="https://github.com/thabeebjafran/job-ingestion-auditor" target="_blank" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
-              View Repository <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-            <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono font-medium">100% Automated</span>
-          </div>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="project-card bi ba rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 flex flex-col justify-between hover:border-cyan-500/50 transition-all hover:shadow-xl group shadow-sm">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50 font-mono font-medium">Econometrics & Tableau</span>
-              <span class="text-xs text-slate-400">Pricing Engine</span>
-            </div>
-            <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition">SmartFare NYC Dynamic Pricing & Elasticity</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Statistical price elasticity modeling and surge pricing optimization on urban mobility data, delivering +11.5% revenue expansion with zero churn penalty.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Python</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Tableau Public</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Statsmodels</span>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between mt-3">
-            <a href="https://github.com/thabeebjafran" target="_blank" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
-              View Analytics Model <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-            <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono font-medium">+11.5% Revenue Lift</span>
-          </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="project-card ba bi rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 flex flex-col justify-between hover:border-cyan-500/50 transition-all hover:shadow-xl group shadow-sm">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/50 font-mono font-medium">Power BI & PostgreSQL</span>
-              <span class="text-xs text-slate-400">Financial Portfolio</span>
-            </div>
-            <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition">$55.3M Credit Card Financial Intelligence</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Enterprise financial dashboard tracking $55.3M in transactions, interest accrual, credit limits, delinquency rates, and dynamic DAX time intelligence KPIs.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Power BI</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">DAX</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">PostgreSQL</span>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between mt-3">
-            <a href="https://github.com/thabeebjafran" target="_blank" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
-              View BI Model <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-            <span class="text-[11px] text-cyan-600 dark:text-cyan-400 font-mono font-medium">$55.3M Tracked</span>
-          </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="project-card bi ba rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 flex flex-col justify-between hover:border-cyan-500/50 transition-all hover:shadow-xl group shadow-sm">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50 font-mono font-medium">Machine Learning</span>
-              <span class="text-xs text-slate-400">Predictive ML</span>
-            </div>
-            <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition">IBM HR Employee Attrition Risk Predictor</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Classification machine learning models uncovering key turnover drivers, generating early risk scoring and retention intervention matrices for HR leadership.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Scikit-Learn</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Google Colab</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">Random Forest</span>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between mt-3">
-            <a href="https://github.com/thabeebjafran" target="_blank" class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
-              Open in Google Colab <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-            <span class="text-[11px] text-amber-600 dark:text-amber-400 font-mono font-medium">88% Accuracy</span>
-          </div>
-        </div>
-
-      </section>
+      <!-- DYNAMIC PROJECTS GRID -->
+      <section id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></section>
     </main>
 
-    <!-- RIGHT SIDEBAR: TECHNICAL CAPABILITIES -->
+    <!-- RIGHT SIDEBAR -->
     <aside class="w-80 border-l border-slate-200 dark:border-slate-800/80 bg-white/70 dark:bg-slate-950/90 overflow-y-auto p-4 hidden xl:block shrink-0 space-y-3">
       <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
         <h2 class="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-mono flex items-center gap-1.5">
@@ -375,65 +174,27 @@
       </div>
 
       <div class="space-y-2 text-xs">
-        <!-- LANGUAGES & FORMULAS -->
         <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
           <button onclick="toggleTree('tree-langs')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-yellow-400"></span> Languages & Formulas
-            </span>
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-400"></span> Languages & Formulas</span>
             <i data-lucide="chevron-down" id="icon-tree-langs" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
           </button>
           <div id="tree-langs" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('Python')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🐍 Python 3.11+ (Pandas, Scikit)</a>
-            <a href="javascript:void(0)" onclick="filterCategory('SQL')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">💾 Advanced SQL (CTEs, Windows)</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Python')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🐍 Python (Pandas, Scikit)</a>
+            <a href="javascript:void(0)" onclick="filterCategory('SQL')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">💾 Advanced SQL (PostgreSQL, BigQuery)</a>
             <a href="javascript:void(0)" onclick="filterCategory('DAX')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📐 DAX Time Intelligence</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Power Query')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">⚡ Power Query M Language</a>
-            <a href="javascript:void(0)" onclick="filterCategory('R')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📊 R & Tidyverse</a>
           </div>
         </div>
 
-        <!-- PIPELINES & FIBER -->
         <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
           <button onclick="toggleTree('tree-pipe')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Data Pipelines & Fiber
-            </span>
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Pipelines & Frameworks</span>
             <i data-lucide="chevron-down" id="icon-tree-pipe" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
           </button>
           <div id="tree-pipe" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('dbt')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🔄 dbt Modular SQL Models</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Airflow')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🌪️ Apache Airflow DAGs</a>
+            <a href="javascript:void(0)" onclick="filterCategory('dbt')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🔄 dbt Data Modeling</a>
             <a href="javascript:void(0)" onclick="filterCategory('Apify')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🕷️ Apify Scheduled Scrapers</a>
-            <a href="javascript:void(0)" onclick="filterCategory('REST APIs')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🔌 Webhooks & REST Gateways</a>
-          </div>
-        </div>
-
-        <!-- AI & MACHINE LEARNING -->
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
-          <button onclick="toggleTree('tree-ai')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-purple-400"></span> AI & Machine Learning
-            </span>
-            <i data-lucide="chevron-down" id="icon-tree-ai" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
-          </button>
-          <div id="tree-ai" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('Gemini')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🧠 Google Gemini 2.5 Flash</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Scikit-Learn')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📈 Predictive Algorithms</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Econometrics')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">📉 Econometric Dynamic Pricing</a>
-          </div>
-        </div>
-
-        <!-- AGILE & TPM -->
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800/90 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
-          <button onclick="toggleTree('tree-tpm')" class="w-full px-3 py-2.5 flex items-center justify-between text-left font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-rose-400"></span> Agile & PMO Frameworks
-            </span>
-            <i data-lucide="chevron-down" id="icon-tree-tpm" class="w-3.5 h-3.5 text-slate-400 transition-transform"></i>
-          </button>
-          <div id="tree-tpm" class="px-3 pb-3 space-y-1.5 text-slate-600 dark:text-slate-400 tree-branch">
-            <a href="javascript:void(0)" onclick="filterCategory('Agile')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🏃 Scrum Sprint Planning & Backlog</a>
-            <a href="javascript:void(0)" onclick="filterCategory('Waterfall')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🏗️ WBS, RACI & Risk Registers</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Agile')" class="block py-1 tree-item hover:text-cyan-600 dark:hover:text-cyan-400">🏃 Agile Scrum Sprint Planning</a>
           </div>
         </div>
       </div>
@@ -441,17 +202,17 @@
 
   </div>
 
-  <!-- PERSISTENT FOOTER BAR -->
+  <!-- FOOTER -->
   <footer class="glass-panel border-t border-slate-200 dark:border-slate-800/80 px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
     <div class="text-slate-500 dark:text-slate-400 flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-      <span>Dubai, UAE &bull; Open to Lead BI / Business Analyst / TPM Opportunities</span>
+      <span>Dubai, UAE &bull; Open to Lead BI / Business Analyst / TPM Roles</span>
     </div>
     <div class="flex items-center gap-2.5">
-      <a href="mailto:thabeebjafran@gmail.com?subject=Inquiry%20from%20Portfolio" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-medium hover:bg-cyan-500 transition flex items-center gap-1.5 shadow-sm">
+      <a href="mailto:thabeebjafran@gmail.com" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-medium hover:bg-cyan-500 transition flex items-center gap-1.5 shadow-sm">
         <i data-lucide="mail" class="w-3.5 h-3.5"></i> Email Direct
       </a>
-      <a href="https://wa.me/971568447304?text=Hello%20Thabeeb,%20saw%20your%20portfolio!" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-500 transition flex items-center gap-1.5 shadow-sm">
+      <a href="https://wa.me/971568447304" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-500 transition flex items-center gap-1.5 shadow-sm">
         <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
       </a>
       <a href="https://raw.githubusercontent.com/thabeebjafran/job-ingestion-auditor/main/profile/ThabeebJafranResume.pdf" target="_blank" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-1.5 border border-slate-200 dark:border-slate-700 shadow-sm">
@@ -460,106 +221,8 @@
     </div>
   </footer>
 
-  <!-- SCRIPT ENGINE -->
-  <script>
-    lucide.createIcons();
-
-    // Theme Management Engine
-    function updateThemeButtons(theme) {
-      const lightBtn = document.getElementById('theme-light-btn');
-      const darkBtn = document.getElementById('theme-dark-btn');
-      const sysBtn = document.getElementById('theme-system-btn');
-
-      [lightBtn, darkBtn, sysBtn].forEach(b => {
-        b.classList.remove('bg-white', 'dark:bg-slate-800', 'text-cyan-600', 'dark:text-cyan-400', 'shadow-sm', 'font-semibold');
-      });
-
-      if (theme === 'light') {
-        lightBtn.classList.add('bg-white', 'text-cyan-600', 'shadow-sm', 'font-semibold');
-      } else if (theme === 'dark') {
-        darkBtn.classList.add('dark:bg-slate-800', 'dark:text-cyan-400', 'shadow-sm', 'font-semibold');
-      } else {
-        sysBtn.classList.add('bg-white', 'dark:bg-slate-800', 'text-cyan-600', 'dark:text-cyan-400', 'shadow-sm', 'font-semibold');
-      }
-    }
-
-    function setTheme(theme) {
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
-        localStorage.theme = 'light';
-      } else if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-        localStorage.theme = 'dark';
-      } else {
-        localStorage.removeItem('theme');
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      }
-      updateThemeButtons(theme);
-    }
-
-    // Initialize Active Button State
-    updateThemeButtons(localStorage.theme || 'system');
-
-    // Listen for System Theme Changes Live
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if (!('theme' in localStorage)) {
-        if (e.matches) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      }
-    });
-
-    // Accordion Tree Toggles
-    function toggleTree(id) {
-      const el = document.getElementById(id);
-      const icon = document.getElementById('icon-' + id);
-      if (el.classList.contains('hidden')) {
-        el.classList.remove('hidden');
-        if (icon) icon.style.transform = 'rotate(0deg)';
-      } else {
-        el.classList.add('hidden');
-        if (icon) icon.style.transform = 'rotate(-90deg)';
-      }
-    }
-
-    // Pillar Filter Engine
-    function filterPillar(pillar) {
-      document.querySelectorAll('.pillar-btn').forEach(btn => {
-        btn.classList.remove('bg-cyan-600', 'text-white', 'shadow-lg');
-        btn.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300');
-      });
-      event.target.classList.add('bg-cyan-600', 'text-white', 'shadow-lg');
-      event.target.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300');
-
-      const cards = document.querySelectorAll('.project-card');
-      const badge = document.getElementById('filter-name');
-
-      if (pillar === 'all') {
-        cards.forEach(c => c.style.display = 'flex');
-        badge.innerText = 'Showing All Showcases';
-      } else {
-        cards.forEach(c => {
-          if (c.classList.contains(pillar)) {
-            c.style.display = 'flex';
-          } else {
-            c.style.display = 'none';
-          }
-        });
-        badge.innerText = 'Showing: ' + pillar.toUpperCase() + ' Pillar';
-      }
-    }
-
-    function filterCategory(cat) {
-      const badge = document.getElementById('filter-name');
-      badge.innerText = 'Filter: ' + cat;
-      document.getElementById('projects-grid').scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
+  <!-- LOAD DATA & ENGINE -->
+  <script src="data/projects.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
